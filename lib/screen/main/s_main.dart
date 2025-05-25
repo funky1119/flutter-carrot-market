@@ -1,5 +1,5 @@
-import 'package:fast_app_base/screen/main/tab/tab_item.dart';
-import 'package:fast_app_base/screen/main/tab/tab_navigator.dart';
+import 'package:flutter_carrot_market/screen/main/tab/tab_item.dart';
+import 'package:flutter_carrot_market/screen/main/tab/tab_navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/common.dart';
@@ -42,17 +42,13 @@ class MainScreenState extends State<MainScreen>
         extendBody: extendBody, //bottomNavigationBar 아래 영역 까지 그림
         drawer: const MenuDrawer(),
         body: Container(
-          color: Theme.of(context)
-              .colorScheme
-              .primary
-              .withOpacity(0.2), // 또는 커스텀 색상 사용 시 직접 지정
+          color: Theme.of(
+            context,
+          ).colorScheme.primary.withOpacity(0.2), // 또는 커스텀 색상 사용 시 직접 지정
           padding: EdgeInsets.only(
             bottom: extendBody ? (60 - bottomNavigationBarBorderRadius) : 0,
           ),
-          child: SafeArea(
-            bottom: !extendBody,
-            child: pages,
-          ),
+          child: SafeArea(bottom: !extendBody, child: pages),
         ),
         bottomNavigationBar: _buildBottomNavigationBar(context),
       ),
@@ -64,18 +60,15 @@ class MainScreenState extends State<MainScreen>
       _currentTabNavigationKey.currentState?.canPop() == false;
 
   IndexedStack get pages => IndexedStack(
-        index: _currentIndex,
-        children: List.generate(tabs.length, (index) {
-          final tab = tabs[index];
-          return Offstage(
-            offstage: _currentTab != tab,
-            child: TabNavigator(
-              navigatorKey: navigatorKeys[index],
-              tabItem: tab,
-            ),
-          );
-        }),
+    index: _currentIndex,
+    children: List.generate(tabs.length, (index) {
+      final tab = tabs[index];
+      return Offstage(
+        offstage: _currentTab != tab,
+        child: TabNavigator(navigatorKey: navigatorKeys[index], tabItem: tab),
       );
+    }),
+  );
 
   void _handleBackPressed(bool didPop) {
     if (!didPop) {
@@ -132,17 +125,23 @@ class MainScreenState extends State<MainScreen>
     });
   }
 
-  BottomNavigationBarItem bottomItem(bool activate, IconData iconData,
-      IconData inActivateIconData, String label) {
+  BottomNavigationBarItem bottomItem(
+    bool activate,
+    IconData iconData,
+    IconData inActivateIconData,
+    String label,
+  ) {
     return BottomNavigationBarItem(
-        icon: Icon(
-          key: ValueKey(label),
-          activate ? iconData : inActivateIconData,
-          color: activate
-              ? context.appColors.iconButton
-              : context.appColors.iconButtonInactivate,
-        ),
-        label: label);
+      icon: Icon(
+        key: ValueKey(label),
+        activate ? iconData : inActivateIconData,
+        color:
+            activate
+                ? context.appColors.iconButton
+                : context.appColors.iconButtonInactivate,
+      ),
+      label: label,
+    );
   }
 
   void _handleOnTapNavigationBarItem(int index) {

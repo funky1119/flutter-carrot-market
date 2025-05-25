@@ -1,16 +1,14 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/widget/round_button_theme.dart';
-import 'package:fast_app_base/common/widget/w_round_button.dart';
-import 'package:fast_app_base/screen/dialog/d_message.dart';
+import 'package:flutter_carrot_market/common/common.dart';
+import 'package:flutter_carrot_market/common/widget/round_button_theme.dart';
+import 'package:flutter_carrot_market/common/widget/w_round_button.dart';
+import 'package:flutter_carrot_market/screen/dialog/d_message.dart';
 import 'package:flutter/material.dart';
 
 import '../../../dialog/d_color_bottom.dart';
 import '../../../dialog/d_confirm.dart';
 
 class HomeFragment extends StatelessWidget {
-  const HomeFragment({
-    Key? key,
-  }) : super(key: key);
+  const HomeFragment({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class HomeFragment extends StatelessWidget {
               IconButton(
                 onPressed: () => openDrawer(context),
                 icon: const Icon(Icons.menu),
-              )
+              ),
             ],
           ),
           const EmptyExpanded(),
@@ -52,7 +50,7 @@ class HomeFragment extends StatelessWidget {
             onTap: () => openDrawer(context),
             theme: RoundButtonTheme.blink,
           ),
-          const EmptyExpanded()
+          const EmptyExpanded(),
         ],
       ),
     );
@@ -70,10 +68,7 @@ class HomeFragment extends StatelessWidget {
           alignment: Alignment.center,
           child: const Text(
             '에러 보여주기 버튼',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 13,
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 13),
           ),
         ),
       ),
@@ -81,11 +76,12 @@ class HomeFragment extends StatelessWidget {
   }
 
   Future<void> showConfirmDialog(BuildContext context) async {
-    final confirmDialogResult = await ConfirmDialog(
-      '오늘 기분이 좋나요?',
-      buttonText: "네",
-      cancelButtonText: "아니오",
-    ).show();
+    final confirmDialogResult =
+        await ConfirmDialog(
+          '오늘 기분이 좋나요?',
+          buttonText: "네",
+          cancelButtonText: "아니오",
+        ).show();
     debugPrint(confirmDialogResult?.isSuccess.toString());
 
     confirmDialogResult?.runIfSuccess((data) {

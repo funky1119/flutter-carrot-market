@@ -1,5 +1,5 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/opensource/vo_package.dart';
+import 'package:flutter_carrot_market/common/common.dart';
+import 'package:flutter_carrot_market/screen/opensource/vo_package.dart';
 import 'package:flutter/material.dart';
 
 class OpensourceItem extends StatelessWidget {
@@ -52,11 +52,7 @@ class OpensourceItem extends StatelessWidget {
             height: 230,
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Text(package.license ?? ''),
-                ],
-              ),
+              child: Column(children: [Text(package.license ?? '')]),
             ),
           ),
         ],

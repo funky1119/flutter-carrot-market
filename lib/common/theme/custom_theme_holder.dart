@@ -1,4 +1,4 @@
-import 'package:fast_app_base/common/theme/custom_theme.dart';
+import 'package:flutter_carrot_market/common/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../common.dart';
@@ -14,9 +14,9 @@ class CustomThemeHolder extends InheritedWidget {
     required this.theme,
     required this.changeTheme,
     Key? key,
-  })  : appColors = theme.appColors,
-        appShadows = theme.appShadows,
-        super(key: key, child: child);
+  }) : appColors = theme.appColors,
+       appShadows = theme.appShadows,
+       super(key: key, child: child);
 
   @override
   bool updateShouldNotify(CustomThemeHolder oldWidget) {

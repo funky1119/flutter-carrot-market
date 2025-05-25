@@ -1,6 +1,6 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/theme/custom_theme_app.dart';
-import 'package:fast_app_base/screen/main/s_main.dart';
+import 'package:flutter_carrot_market/common/common.dart';
+import 'package:flutter_carrot_market/common/theme/custom_theme_app.dart';
+import 'package:flutter_carrot_market/screen/main/s_main.dart';
 import 'package:flutter/material.dart';
 
 import 'common/theme/custom_theme.dart';

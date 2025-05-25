@@ -1,4 +1,4 @@
-import 'package:fast_app_base/common/data/preference/item/nullable_preference_item.dart';
+import 'package:flutter_carrot_market/common/data/preference/item/nullable_preference_item.dart';
 
 import '../app_preferences.dart';
 
@@ -7,8 +7,8 @@ class RxnPreferenceItem<T, R extends Rxn<T>> extends NullablePreferenceItem<T> {
   bool _isLoaded = false;
 
   RxnPreferenceItem(String key, [T? defaultValue])
-      : _rxnValue = createRxnValue<T, R>(defaultValue),
-        super(key, defaultValue);
+    : _rxnValue = createRxnValue<T, R>(defaultValue),
+      super(key, defaultValue);
 
   void _load() {
     _isLoaded = true;

@@ -1,6 +1,6 @@
 {
-    "name": "fast_app_base",
-    "short_name": "fast_app_base",
+    "name": "flutter_carrot_market",
+    "short_name": "flutter_carrot_market",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

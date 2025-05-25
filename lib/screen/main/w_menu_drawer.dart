@@ -1,9 +1,7 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:fast_app_base/screen/opensource/s_opensource.dart';
+import 'package:flutter_carrot_market/screen/opensource/s_opensource.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
 import '../../../screen/dialog/d_message.dart';
@@ -150,7 +148,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
             color: Theme.of(context).colorScheme.surface,
             boxShadow: const [
               BoxShadow(
-                  offset: Offset(1, 1), blurRadius: 2, color: Colors.black26),
+                offset: Offset(1, 1),
+                blurRadius: 2,
+                color: Colors.black26,
+              ),
             ],
           ),
           child: Row(
@@ -158,22 +159,27 @@ class _MenuDrawerState extends State<MenuDrawer> {
               const SizedBox(width: 10),
               DropdownButton<String>(
                 items: Language.values
-                    .map((lang) => DropdownMenuItem(
-                          value: describeEnum(lang),
-                          child: Row(
-                            children: [
-                              flag(lang.flagPath),
-                              const SizedBox(width: 8),
-                              Text(describeEnum(lang),
-                                  style: const TextStyle(fontSize: 12)),
-                            ],
-                          ),
-                        ))
+                    .map(
+                      (lang) => DropdownMenuItem(
+                        value: describeEnum(lang),
+                        child: Row(
+                          children: [
+                            flag(lang.flagPath),
+                            const SizedBox(width: 8),
+                            Text(
+                              describeEnum(lang),
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
                     .toList(),
                 onChanged: (value) async {
                   if (value == null) return;
-                  await context
-                      .setLocale(Language.find(value.toLowerCase()).locale);
+                  await context.setLocale(
+                    Language.find(value.toLowerCase()).locale,
+                  );
                 },
                 value: describeEnum(currentLanguage),
                 underline: const SizedBox.shrink(),
