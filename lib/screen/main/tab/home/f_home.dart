@@ -15,7 +15,7 @@ class HomeFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.appColors.seedColor.getMaterialColorValues[100],
+      color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -59,13 +59,25 @@ class HomeFragment extends StatelessWidget {
   }
 
   void showSnackbar(BuildContext context) {
-    context.showSnackbar('snackbar 입니다.',
-        extraButton: Tap(
-          onTap: () {
-            context.showErrorSnackbar('error');
-          },
-          child: '에러 보여주기 버튼'.text.white.size(13).make().centered().pSymmetric(h: 10, v: 5),
-        ));
+    context.showSnackbar(
+      'snackbar 입니다.',
+      extraButton: GestureDetector(
+        onTap: () {
+          context.showErrorSnackbar('error');
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          alignment: Alignment.center,
+          child: const Text(
+            '에러 보여주기 버튼',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 13,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   Future<void> showConfirmDialog(BuildContext context) async {

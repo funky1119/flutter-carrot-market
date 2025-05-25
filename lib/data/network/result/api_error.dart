@@ -19,11 +19,11 @@ class ApiError {
     if (e is DioError) {
       if (!kReleaseMode) {
         return SimpleResult.failure(ApiError(
-            message: e.error?.toString() ?? e.message ?? 'message is empty',
+            message: e.error?.toString() ?? e.message,
             isApplicationError: e.response == null));
       } else {
-        return SimpleResult.failure(
-            ApiError(message: 'api_error'.tr(), statusCode: e.response?.statusCode));
+        return SimpleResult.failure(ApiError(
+            message: 'api_error'.tr(), statusCode: e.response?.statusCode));
       }
     }
 

@@ -36,12 +36,16 @@ class _ModeSwitchState extends State<ModeSwitch> {
       onTap: () => widget.onChanged(!widget.value),
       child: Row(
         children: [
-          'Light'
-              .text
-              .size(14)
-              .color(widget.value ? context.appColors.inActivate : context.appColors.activate)
-              .bold
-              .makeWithDefaultFont(),
+          Text(
+            'Light',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: widget.value
+                  ? context.appColors.inActivate
+                  : context.appColors.activate,
+            ),
+          ),
           const Width(5),
           SizedBox(
             height: widget.height,
@@ -58,26 +62,35 @@ class _ModeSwitchState extends State<ModeSwitch> {
                 ),
                 AnimatedContainer(
                   duration: duration,
-                  padding: EdgeInsets.symmetric(horizontal: (2 / 25) * widget.height),
-                  alignment: widget.value ? Alignment.centerRight : Alignment.centerLeft,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: (2 / 25) * widget.height),
+                  alignment: widget.value
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
                   child: Stack(
                     children: [
-                      Container(
-                        height: (3 / 4) * widget.height,
-                        width: (3 / 4) * widget.height,
-                        decoration: BoxDecoration(
-                          color: widget.activeThumbColor,
+                      Opacity(
+                        opacity: widget.value ? 1.0 : 0.0,
+                        child: Container(
+                          height: (3 / 4) * widget.height,
+                          width: (3 / 4) * widget.height,
+                          decoration: BoxDecoration(
+                            color: widget.activeThumbColor,
+                          ),
+                          child: widget.activeThumbImage,
                         ),
-                        child: widget.activeThumbImage,
-                      ).opacity(value: widget.value ? 1 : 0),
-                      Container(
-                        height: (3 / 4) * widget.height,
-                        width: (3 / 4) * widget.height,
-                        decoration: BoxDecoration(
-                          color: widget.inactiveThumbColor,
+                      ),
+                      Opacity(
+                        opacity: widget.value ? 0.0 : 1.0,
+                        child: Container(
+                          height: (3 / 4) * widget.height,
+                          width: (3 / 4) * widget.height,
+                          decoration: BoxDecoration(
+                            color: widget.inactiveThumbColor,
+                          ),
+                          child: widget.inactiveThumbImage,
                         ),
-                        child: widget.inactiveThumbImage,
-                      ).opacity(value: widget.value ? 0 : 1),
+                      ),
                     ],
                   ),
                 ),
@@ -85,12 +98,16 @@ class _ModeSwitchState extends State<ModeSwitch> {
             ),
           ),
           const Width(5),
-          'Dark'
-              .text
-              .size(14)
-              .color(widget.value ? context.appColors.activate : context.appColors.inActivate)
-              .bold
-              .makeWithDefaultFont(),
+          Text(
+            'Dark',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: widget.value
+                  ? context.appColors.activate
+                  : context.appColors.inActivate,
+            ),
+          )
         ],
       ),
     );

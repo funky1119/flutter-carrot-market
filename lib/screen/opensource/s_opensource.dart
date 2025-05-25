@@ -34,13 +34,19 @@ class _OpensourceScreenState extends State<OpensourceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: 'opensource'.tr().text.make(),
+        title: Text(
+          'opensource'.tr(),
+          style: const TextStyle(fontSize: 16, color: Colors.black),
+        ),
       ),
       body: ListView.separated(
         itemBuilder: (context, index) => OpensourceItem(packageList[index]),
         itemCount: packageList.length,
         separatorBuilder: (BuildContext context, int index) {
-          return const Line().pSymmetric(h:20);
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Divider(),
+          );
         },
       ),
     );

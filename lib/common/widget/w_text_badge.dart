@@ -62,7 +62,8 @@ class TextBadge extends StatelessWidget {
 
   Container badge() {
     return Container(
-        padding: EdgeInsets.symmetric(vertical: verticalPadding, horizontal: horizontalPadding),
+        padding: EdgeInsets.symmetric(
+            vertical: verticalPadding, horizontal: horizontalPadding),
         decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.circular(borderRadius),
@@ -70,14 +71,17 @@ class TextBadge extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            text.text
-                .maxLines(1)
-                .size(fontSize)
-                .minFontSize(4)
-                .medium
-                .color(textColor)
-                .makeWithDefaultFont(),
-            if (rightWidget != null) rightWidget!
+            Text(
+              text,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.w500, // medium
+                color: textColor,
+              ),
+            ),
+            if (rightWidget != null) rightWidget!,
           ],
         ));
   }
