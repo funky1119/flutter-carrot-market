@@ -19,7 +19,7 @@ class ApiError {
     if (e is DioError) {
       if (!kReleaseMode) {
         return SimpleResult.failure(ApiError(
-            message: e.error?.toString() ?? e.message,
+            message: e.error?.toString() ?? e.message ?? 'api_error'.tr(),
             isApplicationError: e.response == null));
       } else {
         return SimpleResult.failure(ApiError(
